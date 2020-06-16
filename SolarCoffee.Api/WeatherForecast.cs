@@ -1,6 +1,6 @@
 using System;
 
-namespace SolarCoffe.Api
+namespace SolarCoffee.Api
 {
     public class WeatherForecast
     {

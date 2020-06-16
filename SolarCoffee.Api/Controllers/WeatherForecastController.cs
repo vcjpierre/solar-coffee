@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace SolarCoffe.Api.Controllers
+namespace SolarCoffee.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]

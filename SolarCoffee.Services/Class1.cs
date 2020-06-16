@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SolarCoffe.Data
+namespace SolarCoffee.Services
 {
     public class Class1
     {

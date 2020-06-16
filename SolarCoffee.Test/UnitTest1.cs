@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace SolarCoffe.Test
+namespace SolarCoffee.Test
 {
     public class UnitTest1
     {
