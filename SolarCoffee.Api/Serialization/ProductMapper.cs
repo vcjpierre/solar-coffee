@@ -2,7 +2,7 @@
 
 namespace SolarCoffee.Api.Serialization
 {
-    public class ProductMapper {
+    public static class ProductMapper {
         
         /// <summary>
         /// Maps a Product data model to a ProductModel view model
