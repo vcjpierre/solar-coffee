@@ -1,13 +1,12 @@
-﻿using System.Linq;
+using System.Linq;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SolarCoffee.Api.Serialization;
 using SolarCoffee.Api.ViewModels;
 using SolarCoffee.Services.Inventory;
+using SolarCoffee.Api.Serialization;
 
-namespace SolarCoffee.Api.Controllers
-{
+namespace SolarCoffee.Api.Controllers {
     [ApiController]
     public class InventoryController : ControllerBase {
         private readonly IInventoryService _inventoryService;
@@ -24,7 +23,7 @@ namespace SolarCoffee.Api.Controllers
         [HttpGet("/api/inventory")]
         public ActionResult GetCurrentInventory() {
             _logger.LogInformation("Getting all inventory...");
-
+            
             var inventory = _inventoryService.GetCurrentInventory()
                 .Select(pi => new ProductInventoryModel {
                     Id = pi.Id,
@@ -40,11 +39,9 @@ namespace SolarCoffee.Api.Controllers
 
         [HttpPatch("/api/inventory")]
         public ActionResult UpdateInventory([FromBody] ShipmentModel shipment) {
-            _logger.LogInformation(
-                "Updating inventory " +
-                $"for {shipment.ProductId} - " +
-                $"Adjustment: {shipment.Adjustment}");
-
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
             var id = shipment.ProductId;
             var adjustment = shipment.Adjustment;
             var inventory = _inventoryService.UpdateUnitsAvailable(id, adjustment);
