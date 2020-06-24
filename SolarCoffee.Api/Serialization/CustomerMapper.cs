@@ -1,9 +1,8 @@
-﻿using System;
-using SolarCoffee.Api.ViewModels;
+using System;
 using SolarCoffee.Data.Models;
+using SolarCoffee.Api.ViewModels;
 
-namespace SolarCoffee.Api.Serialization
-{
+namespace SolarCoffee.Api.Serialization {
     public static class CustomerMapper {
         /// <summary>
         /// Serializes a Customer data model into a CustomerModel view model
@@ -35,7 +34,7 @@ namespace SolarCoffee.Api.Serialization
                 PrimaryAddress = MapCustomerAddress(customer.PrimaryAddress),
             };
         }
-
+        
         /// <summary>
         /// Maps a CustomerAddress data model to a CustomerAddressModel view model
         /// </summary>
@@ -54,7 +53,7 @@ namespace SolarCoffee.Api.Serialization
                 UpdatedOn = DateTime.UtcNow,
             };
         }
-
+        
         /// <summary>
         /// Maps a CustomerAddressModel view model to a CustomerAddress data model
         /// </summary>

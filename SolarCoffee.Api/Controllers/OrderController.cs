@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SolarCoffee.Api.Serialization;
 using SolarCoffee.Api.ViewModels;
 using SolarCoffee.Services.Customer;
 using SolarCoffee.Services.Order;
 
-namespace SolarCoffee.Api.Controllers
-{
+namespace SolarCoffee.Api.Controllers {
+    
     [ApiController]
     public class OrderController : ControllerBase {
         private readonly ILogger<OrderController> _logger;
@@ -24,13 +24,16 @@ namespace SolarCoffee.Api.Controllers
 
         [HttpPost("/api/invoice")]
         public ActionResult GenerateNewOrder([FromBody] InvoiceModel invoice) {
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
             _logger.LogInformation("Generating invoice");
             var order = OrderMapper.SerializeInvoiceToOrder(invoice);
             order.Customer = _customerService.GetById(invoice.CustomerId);
             _orderService.GenerateOpenOrder(order);
             return Ok();
         }
-        
+
         [HttpGet("/api/order")]
         public ActionResult GetOrders() {
             var orders = _orderService.GetOrders();

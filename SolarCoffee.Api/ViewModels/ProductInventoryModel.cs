@@ -1,5 +1,4 @@
-﻿namespace SolarCoffee.Api.ViewModels
-{
+namespace SolarCoffee.Api.ViewModels {
     public class ProductInventoryModel {
         public int Id { get; set; }
         public int QuantityOnHand { get; set; }

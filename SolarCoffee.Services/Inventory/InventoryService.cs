@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -6,8 +6,7 @@ using Microsoft.Extensions.Logging;
 using SolarCoffee.Data;
 using SolarCoffee.Data.Models;
 
-namespace SolarCoffee.Services.Inventory
-{
+namespace SolarCoffee.Services.Inventory {
     public class InventoryService : IInventoryService {
         private readonly SolarDbContext _db;
         private readonly ILogger<InventoryService> _logger;
@@ -16,7 +15,7 @@ namespace SolarCoffee.Services.Inventory
             _db = dbContext;
             _logger = logger;
         }
-
+        
         /// <summary>
         /// Returns all current inventory from the database
         /// </summary>
@@ -92,7 +91,7 @@ namespace SolarCoffee.Services.Inventory
         /// <exception cref="NotImplementedException"></exception>
         public List<ProductInventorySnapshot> GetSnapshotHistory() {
             var earliest = DateTime.UtcNow - TimeSpan.FromHours(6);
-
+            
             return _db.ProductInventorySnapshots
                 .Include(snap => snap.Product)
                 .Where(snap 
@@ -100,14 +99,14 @@ namespace SolarCoffee.Services.Inventory
                        && !snap.Product.IsArchived)
                 .ToList();
         }
-
+        
         /// <summary>
         /// Creates a Snapshot record using the provided ProductInventory instance
         /// </summary>
         /// <param name="inventory"></param>
         private void CreateSnapshot(ProductInventory inventory) {
             var now = DateTime.UtcNow;
-
+            
             var snapshot = new ProductInventorySnapshot {
                 SnapshotTime = now,
                 Product = inventory.Product,

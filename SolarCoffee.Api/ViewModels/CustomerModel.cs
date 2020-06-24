@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SolarCoffee.Api.ViewModels
-{
+namespace SolarCoffee.Api.ViewModels {
     public class CustomerModel {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }
@@ -11,7 +10,7 @@ namespace SolarCoffee.Api.ViewModels
         [MaxLength(32)] public string LastName { get; set; }
         public CustomerAddressModel PrimaryAddress { get; set; }
     }
-
+    
     public class CustomerAddressModel {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }

@@ -1,19 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SolarCoffee.Data;
 using SolarCoffee.Data.Models;
 
-namespace SolarCoffee.Services.Product
-{
-    public class ProductService : IProductService
-    {
+namespace SolarCoffee.Services.Product {
+    public class ProductService : IProductService {
+
         private readonly SolarDbContext _db;
 
         public ProductService(SolarDbContext dbContext) {
             _db = dbContext;
         }
-
+        
         /// <summary>
         /// Retrieves all Product from the database
         /// </summary>
@@ -47,9 +46,9 @@ namespace SolarCoffee.Services.Product
                 };
 
                 _db.ProductInventories.Add(newInventory);
-
+                
                 _db.SaveChanges();
-
+                
                 return new ServiceResponse<Data.Models.Product> {
                     Data = product,
                     Time = DateTime.UtcNow,
@@ -57,7 +56,7 @@ namespace SolarCoffee.Services.Product
                     IsSuccess = true
                 };
             }
-
+            
             catch (Exception e) {
                 return new ServiceResponse<Data.Models.Product> {
                     Data = product,

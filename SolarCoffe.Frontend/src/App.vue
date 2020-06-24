@@ -21,7 +21,8 @@ export default class App extends Vue {}
 </script>
 
 <style lang="scss">
-@import "@/scss/global.scss";
+
+  @import "@/scss/global.scss";
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -30,9 +31,11 @@ export default class App extends Vue {}
   text-align: center;
   color: #2c3e50;
   display: flex;
+
   .app-menu {
     position: fixed;
   }
+
   .app-content {
     padding: 1.2rem;
     width: 90%;
@@ -40,14 +43,18 @@ export default class App extends Vue {}
     text-align: left;
   }
 }
+
 * {
   margin: 0;
 }
+
 a {
   text-decoration: none;
 }
+
 hr {
   border: 1px solid #eee;
   margin: 1rem 0;
 }
+
 </style>

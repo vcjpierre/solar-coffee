@@ -7,14 +7,25 @@
         aria-labelledby="modalTitle"
         aria-describedby="modalDescription"
       >
-        <header class="modal-header" id="modalTitle">
-          <slot name="header"> </slot>
+        <header
+          class="modal-header"
+          id="modalTitle"
+        >
+          <slot name="header">
+          </slot>
         </header>
-        <section class="modal-body" id="modalDescription">
-          <slot name="body"> </slot>
+
+        <section
+          class="modal-body"
+          id="modalDescription"
+        >
+          <slot name="body">
+          </slot>
         </section>
+
         <footer class="modal-footer">
-          <slot name="footer"> </slot>
+          <slot name="footer">
+          </slot>
         </footer>
       </div>
     </div>
@@ -38,7 +49,6 @@ export default class SolarModal extends Vue {
 
 <style scoped lang="scss">
 @import "@/scss/global.scss";
-
 .modal-backdrop {
   position: fixed;
   top: 0;

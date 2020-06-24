@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -8,8 +8,7 @@ using SolarCoffee.Data.Models;
 using SolarCoffee.Services.Inventory;
 using SolarCoffee.Services.Product;
 
-namespace SolarCoffee.Services.Order
-{
+namespace SolarCoffee.Services.Order {
     public class OrderService : IOrderService {
 
         private readonly SolarDbContext _db;
@@ -28,7 +27,7 @@ namespace SolarCoffee.Services.Order
             _productService = productService;
             _inventoryService = inventoryService;
         }
-
+        
         /// <summary>
         /// Gets all SalesOrders in the system
         /// </summary>
@@ -49,9 +48,9 @@ namespace SolarCoffee.Services.Order
         /// <returns></returns>
         public ServiceResponse<bool> GenerateOpenOrder(SalesOrder order) {
             var now = DateTime.UtcNow;
-
+            
             _logger.LogInformation("Generating new order");
-
+            
             foreach (var item in order.SalesOrderItems) {
                 item.Product = _productService
                     .GetProductById(item.Product.Id);

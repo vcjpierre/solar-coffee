@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -6,8 +6,7 @@ using SolarCoffee.Api.Serialization;
 using SolarCoffee.Api.ViewModels;
 using SolarCoffee.Services.Customer;
 
-namespace SolarCoffee.Api.Controllers
-{
+namespace SolarCoffee.Api.Controllers {
     public class CustomerController : ControllerBase {
         private readonly ILogger<CustomerController> _logger;
         private readonly ICustomerService _customerService;
@@ -19,6 +18,9 @@ namespace SolarCoffee.Api.Controllers
 
         [HttpPost("/api/customer")]
         public ActionResult CreateCustomer([FromBody] CustomerModel customer) {
+            if (!ModelState.IsValid) {
+                return BadRequest(ModelState);
+            }
             _logger.LogInformation("Creating a new customer");
             customer.CreatedOn = DateTime.UtcNow;
             customer.UpdatedOn = DateTime.UtcNow;
@@ -31,7 +33,7 @@ namespace SolarCoffee.Api.Controllers
         public ActionResult GetCustomers() {
             _logger.LogInformation("Getting customers");
             var customers = _customerService.GetAllCustomers();
-
+            
             var customerModels = customers
                 .Select(customer => new CustomerModel {
                     Id = customer.Id,
@@ -44,10 +46,10 @@ namespace SolarCoffee.Api.Controllers
                 })
                 .OrderByDescending(customer => customer.CreatedOn)
                 .ToList();
-
+            
             return Ok(customerModels);
         }
-
+        
         [HttpDelete("/api/customer/{id}")]
         public ActionResult DeleteCustomer(int id) {
             _logger.LogInformation("Deleting a customer");

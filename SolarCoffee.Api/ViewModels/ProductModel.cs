@@ -1,7 +1,6 @@
-﻿using System;
+using System;
 
-namespace SolarCoffee.Api.ViewModels
-{
+namespace SolarCoffee.Api.ViewModels {
     /// <summary>
     ///     Product entity DTO
     /// </summary>

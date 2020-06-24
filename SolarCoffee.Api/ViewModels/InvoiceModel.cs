@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace SolarCoffee.Api.ViewModels
-{
+namespace SolarCoffee.Api.ViewModels {
+    
     /// <summary>
     /// View model for open SalesOrders
     /// </summary>

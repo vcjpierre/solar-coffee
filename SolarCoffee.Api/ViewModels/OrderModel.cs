@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace SolarCoffee.Api.ViewModels
-{
+namespace SolarCoffee.Api.ViewModels {
     public class OrderModel {
         public int Id { get; set; }
         public DateTime CreatedOn { get; set; }

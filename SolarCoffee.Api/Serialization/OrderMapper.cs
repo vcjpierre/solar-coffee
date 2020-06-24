@@ -1,16 +1,16 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using SolarCoffee.Api.ViewModels;
 using SolarCoffee.Data.Models;
+using SolarCoffee.Api.Serialization;
+using SolarCoffee.Api.ViewModels;
 
-namespace SolarCoffee.Api.Serialization
-{
+namespace SolarCoffee.Api.Serialization {
     /// <summary>
     /// Handles mapping Order data models to and from related View Models
     /// </summary>
     public static class OrderMapper {
-
+        
         /// <summary>
         /// Maps an InvoiceModel view model to a SalesOrder data model
         /// </summary>
@@ -23,7 +23,7 @@ namespace SolarCoffee.Api.Serialization
                     Quantity = item.Quantity,
                     Product = ProductMapper.SerializeProductModel(item.Product)
                 }).ToList();
-
+                
             return new SalesOrder {
                 SalesOrderItems = salesOrderItems,
                 CreatedOn = DateTime.UtcNow,

@@ -394,7 +394,7 @@ namespace SolarCoffee.Data.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("SlSalesOrders");
+                    b.ToTable("SalesOrders");
                 });
 
             modelBuilder.Entity("SolarCoffee.Data.Models.SalesOrderItem", b =>

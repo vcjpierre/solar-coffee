@@ -1,7 +1,6 @@
-﻿using SolarCoffee.Api.ViewModels;
+using SolarCoffee.Api.ViewModels;
 
-namespace SolarCoffee.Api.Serialization
-{
+namespace SolarCoffee.Api.Serialization {
     public static class ProductMapper {
         
         /// <summary>

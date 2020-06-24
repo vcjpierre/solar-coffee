@@ -1,3 +1,5 @@
+<!--suppress XmlUnboundNsPrefix -->
+
 <template>
   <solar-modal>
     <template v-slot:header>

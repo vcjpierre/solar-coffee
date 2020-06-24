@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace SolarCoffee.Services {
     public class ServiceResponse<T> {

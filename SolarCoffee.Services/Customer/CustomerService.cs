@@ -1,19 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SolarCoffee.Data;
 
-namespace SolarCoffee.Services.Customer
-{
+namespace SolarCoffee.Services.Customer {
     public class CustomerService : ICustomerService {
-
+        
         private readonly SolarDbContext _db;
 
         public CustomerService(SolarDbContext dbContext) {
             _db = dbContext;
         }
-
+        
         /// <summary>
         /// Returns a list of Customers from the database
         /// </summary>
@@ -41,7 +40,7 @@ namespace SolarCoffee.Services.Customer
                     Data = customer
                 };
             }
-
+            
             catch (Exception e) {
                 return new ServiceResponse<Data.Models.Customer> {
                     IsSuccess = false,
@@ -73,7 +72,7 @@ namespace SolarCoffee.Services.Customer
             try {
                 _db.Customers.Remove(customer);
                 _db.SaveChanges();
-
+                
                 return new ServiceResponse<bool> {
                     Time = now,
                     IsSuccess = true,

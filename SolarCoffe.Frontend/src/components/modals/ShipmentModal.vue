@@ -1,3 +1,5 @@
+<!--suppress XmlUnboundNsPrefix -->
+
 <template>
   <solar-modal>
     <template v-slot:header>
@@ -59,19 +61,19 @@ export default class ShipmentModal extends Vue {
     isArchived: false
   };
 
-  qtyReceived = 0;
+  qtyReceived: number = 0;
 
   close() {
     this.$emit("close");
   }
 
   save() {
-    const shipment: IShipment = {
+    let shipment: IShipment = {
       productId: this.selectedProduct.id,
       adjustment: this.qtyReceived
     };
 
-    this.$emit("save:shipment", shipment);
+    this.$emit('save:shipment', shipment)
   }
 }
 </script>
