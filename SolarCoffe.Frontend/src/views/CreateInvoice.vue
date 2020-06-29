@@ -238,7 +238,7 @@ export default class CreateInvoice extends Vue {
 
   async submitInvoice(): Promise<void> {
     this.invoice = {
-      customer: this.selectedCustomerId,
+      customerId: this.selectedCustomerId,
       lineItems: this.lineItems
     };
     await invoiceService.makeNewInvoice(this.invoice);
