@@ -12,6 +12,7 @@
     "apexcharts": "^3.15.5",
     "axios": "^0.19.2",
     "core-js": "^3.6.5",
+    "cypress": "^4.9.0",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
     "moment": "^2.27.0",
