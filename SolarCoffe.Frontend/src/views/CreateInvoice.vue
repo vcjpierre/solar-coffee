@@ -193,17 +193,15 @@ const invoiceService = new InvoiceService();
 
 @Component({ name: "CreateInvoice", components: { SolarButton } })
 export default class CreateInvoice extends Vue {
-  invoiceStep = 1;
-
+  invoiceStep: number = 1;
   invoice: IInvoice = {
     createdOn: new Date(),
     customerId: 0,
     lineItems: [],
     updatedOn: new Date()
   };
-
   customers: ICustomer[] = [];
-  selectedCustomerId = 0;
+  selectedCustomerId: number = 0;
   inventory: IProductInventory[] = [];
   lineItems: ILineItem[] = [];
   newItem: ILineItem = { product: undefined, quantity: 0 };
@@ -212,12 +210,15 @@ export default class CreateInvoice extends Vue {
     if (this.invoiceStep === 1) {
       return this.selectedCustomerId !== 0;
     }
+
     if (this.invoiceStep === 2) {
       return this.lineItems.length;
     }
+
     if (this.invoiceStep === 3) {
       return false;
     }
+
     return false;
   }
 
@@ -241,39 +242,45 @@ export default class CreateInvoice extends Vue {
       customerId: this.selectedCustomerId,
       lineItems: this.lineItems
     };
+
     await invoiceService.makeNewInvoice(this.invoice);
     this.downloadPdf();
     await this.$router.push("/orders");
   }
 
   downloadPdf() {
-    const pdf = new jsPDF("p", "pt", "a4", true);
-    const invoice = document.getElementById("invoice");
-    const width = this.$refs.invoice.clientWidth;
-    const height = this.$refs.invoice.clientHeight;
+    let pdf = new jsPDF("p", "pt", "a4", true);
+    let invoice = document.getElementById("invoice");
+    let width = this.$refs.invoice.clientWidth;
+    let height = this.$refs.invoice.clientHeight;
+
     html2canvas(invoice).then(canvas => {
-      const image = canvas.toDataURL("image/png");
+      let image = canvas.toDataURL("image/png");
       pdf.addImage(image, "PNG", 0, 0, width * 0.55, height * 0.55);
       pdf.save("invoice");
     });
   }
 
   addLineItem() {
-    const newItem: ILineItem = {
+    let newItem: ILineItem = {
       product: this.newItem.product,
       quantity: Number(this.newItem.quantity)
     };
-    const existingItems = this.lineItems.map(item => item.product.id);
+
+    let existingItems = this.lineItems.map(item => item.product.id);
+
     if (existingItems.includes(newItem.product.id)) {
-      const lineItem = this.lineItems.find(
+      let lineItem = this.lineItems.find(
         item => item.product.id === newItem.product.id
       );
+
       let currentQuantity = Number(lineItem.quantity);
-      const updatedQuantity = (currentQuantity += newItem.quantity);
+      let updatedQuantity = (currentQuantity += newItem.quantity);
       lineItem.quantity = updatedQuantity;
     } else {
       this.lineItems.push(this.newItem);
     }
+
     this.newItem = { product: undefined, quantity: 0 };
   }
 
@@ -321,7 +328,6 @@ export default class CreateInvoice extends Vue {
 
 .invoice-step {
 }
-
 .invoice-step-detail {
   margin: 1.2rem;
 }
@@ -329,11 +335,13 @@ export default class CreateInvoice extends Vue {
 .invoice-order-list {
   margin-top: 1.2rem;
   padding: 0.8rem;
+
   .line-item {
     display: flex;
     border-bottom: 1px dashed #ccc;
     padding: 0.8rem;
   }
+
   .item-col {
     flex-grow: 1;
   }
@@ -364,6 +372,7 @@ export default class CreateInvoice extends Vue {
 .invoice-logo {
   padding-top: 1.4rem;
   text-align: center;
+
   img {
     width: 280px;
   }

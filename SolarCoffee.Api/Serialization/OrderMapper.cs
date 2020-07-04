@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SolarCoffee.Data.Models;
-using SolarCoffee.Api.Serialization;
 using SolarCoffee.Api.ViewModels;
 
 namespace SolarCoffee.Api.Serialization {

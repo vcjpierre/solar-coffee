@@ -49,6 +49,7 @@ const orderService = new OrderService();
 @Component({ name: "Orders" })
 export default class Orders extends Vue {
   orders: ISalesOrder[] = [];
+
   getTotal(order: ISalesOrder) {
     return order.salesOrderItems.reduce(
       (a, b) => a + b["product"]["price"] * b["quantity"],
@@ -78,7 +79,7 @@ export default class Orders extends Vue {
 <style scoped lang="scss">
 @import "@/scss/global.scss";
 
-green {
+.green {
   font-weight: bold;
   color: $solar-green;
 }
