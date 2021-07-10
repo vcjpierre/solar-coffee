@@ -38,13 +38,14 @@
           <input
             type="text"
             id="state"
+            maxlength="2"
             v-model="customer.primaryAddress.state"
           />
         </li>
         <li>
           <label for="postalCode">Postal Code</label>
           <input
-            type="text"
+            type="number"
             id="postalCode"
             v-model="customer.primaryAddress.postalCode"
           />
