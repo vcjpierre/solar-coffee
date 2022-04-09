@@ -15,7 +15,7 @@
     "cypress": "^4.9.0",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^2.3.1",
-    "moment": "^2.27.0",
+    "moment": "^2.29.2",
     "vue": "^2.6.11",
     "vue-apexcharts": "^1.5.2",
     "vue-class-component": "^7.2.3",
